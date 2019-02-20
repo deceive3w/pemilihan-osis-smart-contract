@@ -1,0 +1,26 @@
+{
+  "name": "pemilihan-osis-smart-contract",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deceive3w/pemilihan-osis-smart-contract.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deceive3w/pemilihan-osis-smart-contract/issues"
+  },
+  "homepage": "https://github.com/deceive3w/pemilihan-osis-smart-contract#readme",
+  "dependencies": {
+    "lite-server": "^2.4.0"
+  }
+}
