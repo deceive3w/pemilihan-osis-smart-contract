@@ -1,9 +1,10 @@
-pragma solidity >=0.4.25;
+pragma solidity >=0.4.24;
+
 
 contract Election {
 
     //model
-    struct Candidate{
+    struct Candidate {
         uint uid;
         string name;
         uint voteCount;
