@@ -16,22 +16,36 @@ const Header = () =>(
 
 class Candidates extends Component{
     state ={
-        initialized: false
+        initialized: false,
+        address: null,
     }
     constructor(props, context){
         super(props)
         console.log('candidates', context)
         this.contracts = context.drizzle.contracts
+        context.drizzle.web3.eth.getAccounts().then(async (res)=>{
+            const address = res[0]
+            this.setState({
+                address
+            })
+        })
     }
     componentDidMount = () => {
 
+    }
+
+    handleVote = (candidate) =>{
+        if(!this.state.address){
+            alert('fail get your address')
+            return
+        }
+        this.contracts.Election.methods.vote.cacheSend(this.state.address,candidate.uid )
     }
     
     render(){
         if(this.props.drizzleStatus.initialized){
 
             if(!this.state.initialized){
-              
                 let key = this.contracts.Election.methods.candidatesCount.cacheCall()
                 const candidatesCount = this.props.Election.candidatesCount[key]
                 if(candidatesCount){
@@ -54,6 +68,8 @@ class Candidates extends Component{
                         <div className="col-12 col-lg-3 col-sm-6 candidate border">
                             <img src="http://scorecard.enga.ge/assets/images/candidates/clinton.jpg" className="candidate-img"/>
                             <h6>{candidate.name}</h6>
+                            <h5>Total Vote: {candidate.voteCount}</h5>
+                            <button onClick={()=>this.handleVote(candidate)}>Vote</button>
                         </div>
                     )
                 })

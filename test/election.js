@@ -3,7 +3,7 @@ var Election = artifacts.require("./Election.sol");
 
 contract('Election', function(accounts){
 
-    it('initialize candidate with to candidates', function(){
+    it('initialize candidate with 5 candidates', function(){
         return Election.deployed().then(async (i)=>{
             totalCandidate = await i.candidatesCount()
             assert.equal(totalCandidate, 5)

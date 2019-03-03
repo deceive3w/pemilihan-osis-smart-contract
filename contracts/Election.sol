@@ -23,6 +23,8 @@ contract Election {
     mapping(uint => Candidate) public candidates;
     mapping(address => Voter) public voters;
 
+    event VoteEvent(uint candidateId, uint voteCount);
+
     constructor () public {
         addCandidate("Calon 1");
         addCandidate("Calon 2");
@@ -50,5 +52,6 @@ contract Election {
         require(candidates[candidateId].uid != 0, "Candidate tidak valid.");
         candidates[candidateId].voteCount++;
         voters[from].balance = 0;
+        emit VoteEvent(candidateId, candidates[candidateId].voteCount);
     }
 }

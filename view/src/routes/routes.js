@@ -7,10 +7,12 @@ import store from '../redux/store';
 import historyRoute from './historyRoute';
 import { ConnectedRouter } from 'connected-react-router';
 import App from '../App';
+import LoaderWeb3 from '../components/LoaderWeb3';
 const StoreContext = React.createContext(null);
 
 export default (
     <DrizzleProvider options={options}>
+        <LoaderWeb3>
         <Provider store={store}>
             <ConnectedRouter  history={historyRoute}>
                 <BrowserRouter >
@@ -20,5 +22,7 @@ export default (
                 </BrowserRouter>
             </ConnectedRouter>
         </Provider>
+        </LoaderWeb3>
+
     </DrizzleProvider>
 )
